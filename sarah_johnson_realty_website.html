@@ -1,0 +1,503 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarah Johnson Real Estate | Philadelphia</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --cream:#F8F5F0;
+  --dark:#1A1A18;
+  --gold:#C9A84C;
+  --gold-light:#E8D5A3;
+  --mid:#6B6B65;
+  --white:#FFFFFF;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;background:rgba(248,245,240,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;letter-spacing:0.08em;color:var(--dark);}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:400;letter-spacing:0.06em;color:var(--mid);text-decoration:none;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--dark);color:var(--white);border:none;padding:10px 22px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;}
+.nav-cta:hover{background:var(--gold);}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;padding-top:80px;}
+.hero-left{padding:80px 48px 80px 48px;display:flex;flex-direction:column;justify-content:center;}
+.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;opacity:0;animation:fadeUp 0.8s 0.2s forwards;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,5vw,72px);font-weight:300;line-height:1.05;margin-bottom:28px;opacity:0;animation:fadeUp 0.8s 0.4s forwards;}
+.hero-title em{font-style:italic;color:var(--gold);}
+.hero-sub{font-size:15px;font-weight:300;line-height:1.7;color:var(--mid);max-width:400px;margin-bottom:40px;opacity:0;animation:fadeUp 0.8s 0.6s forwards;}
+.hero-actions{display:flex;gap:14px;opacity:0;animation:fadeUp 0.8s 0.8s forwards;}
+.btn-primary{background:var(--dark);color:var(--white);border:none;padding:14px 28px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;}
+.btn-primary:hover{background:var(--gold);}
+.btn-outline{background:transparent;color:var(--dark);border:1px solid var(--dark);padding:14px 28px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:400;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.hero-stats{margin-top:56px;display:flex;gap:40px;padding-top:40px;border-top:1px solid rgba(201,168,76,0.2);opacity:0;animation:fadeUp 0.8s 1s forwards;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--dark);}
+.stat-label{font-size:11px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);margin-top:2px;}
+
+.hero-right{position:relative;overflow:hidden;background:var(--dark);}
+.hero-img-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,26,24,0.3) 0%,rgba(201,168,76,0.1) 100%);}
+.hero-img{width:100%;height:100%;object-fit:cover;opacity:0.75;}
+.hero-badge{position:absolute;bottom:40px;left:40px;background:rgba(248,245,240,0.95);backdrop-filter:blur(8px);padding:20px 24px;border-left:3px solid var(--gold);}
+.badge-label{font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+.badge-val{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--dark);}
+.hero-img-bg{width:100%;height:100%;background:linear-gradient(160deg,#2C3E3C 0%,#1A2825 40%,#0F1A18 100%);position:relative;display:flex;align-items:center;justify-content:center;}
+.philly-skyline{position:absolute;bottom:0;left:0;right:0;}
+
+/* LISTINGS */
+.section{padding:96px 48px;}
+.section-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;}
+.section-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;line-height:1.1;}
+.listings-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.listing-card{background:var(--white);overflow:hidden;cursor:pointer;transition:transform 0.3s;}
+.listing-card:hover{transform:translateY(-4px);}
+.listing-img{height:220px;position:relative;overflow:hidden;}
+.listing-img-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;}
+.l1{background:linear-gradient(135deg,#2D4A3E,#1A2E27);}
+.l2{background:linear-gradient(135deg,#3D3228,#251F18);}
+.l3{background:linear-gradient(135deg,#2A3545,#161E2B);}
+.listing-tag{position:absolute;top:16px;left:16px;background:var(--gold);color:var(--white);font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;}
+.listing-info{padding:20px 20px 24px;}
+.listing-price{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;margin-bottom:4px;}
+.listing-addr{font-size:13px;color:var(--mid);margin-bottom:14px;}
+.listing-meta{display:flex;gap:16px;}
+.listing-meta span{font-size:12px;color:var(--mid);display:flex;align-items:center;gap:4px;}
+.listing-meta strong{color:var(--dark);font-weight:500;}
+
+/* ABOUT */
+.about{background:var(--dark);color:var(--white);padding:96px 48px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.about-img-wrap{position:relative;}
+.about-img-block{width:100%;aspect-ratio:3/4;background:linear-gradient(160deg,#3A3A36,#252520);display:flex;align-items:center;justify-content:center;font-size:80px;position:relative;}
+.about-img-accent{position:absolute;bottom:-20px;right:-20px;width:120px;height:120px;border:1px solid var(--gold);z-index:-1;}
+.about-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.about-title{font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:300;line-height:1.1;margin-bottom:24px;}
+.about-title em{font-style:italic;}
+.about-text{font-size:15px;font-weight:300;line-height:1.8;color:rgba(255,255,255,0.65);margin-bottom:32px;}
+.about-highlights{display:flex;flex-direction:column;gap:16px;}
+.highlight{display:flex;align-items:center;gap:14px;font-size:14px;color:rgba(255,255,255,0.8);}
+.highlight-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0;}
+
+/* SERVICES */
+.services{padding:96px 48px;background:var(--white);}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(0,0,0,0.08);margin-top:56px;}
+.service-item{background:var(--white);padding:40px 36px;}
+.service-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:var(--gold-light);margin-bottom:20px;line-height:1;}
+.service-title{font-size:16px;font-weight:500;margin-bottom:12px;}
+.service-desc{font-size:14px;font-weight:300;line-height:1.7;color:var(--mid);}
+
+/* CHATBOT SECTION */
+.chatbot-section{padding:96px 48px;background:var(--cream);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.chatbot-label{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);padding:6px 14px;border-radius:99px;margin-bottom:24px;}
+.chatbot-dot{width:7px;height:7px;background:#22C55E;border-radius:50%;animation:pulse 2s infinite;}
+.chatbot-label-text{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);}
+.chatbot-mockup{background:var(--white);border-radius:16px;box-shadow:0 24px 80px rgba(0,0,0,0.1);overflow:hidden;}
+.chat-header{background:var(--dark);padding:16px 20px;display:flex;align-items:center;gap:12px;}
+.chat-avatar{width:36px;height:36px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:var(--dark);}
+.chat-name{font-size:14px;font-weight:500;color:var(--white);}
+.chat-status{font-size:11px;color:rgba(255,255,255,0.5);}
+.chat-body{padding:20px;display:flex;flex-direction:column;gap:12px;min-height:280px;}
+.msg{max-width:80%;padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.5;}
+.msg-bot{background:#F1F0ED;color:var(--dark);align-self:flex-start;border-bottom-left-radius:4px;}
+.msg-user{background:var(--dark);color:var(--white);align-self:flex-end;border-bottom-right-radius:4px;}
+.msg-typing{display:flex;gap:4px;padding:12px 16px;background:#F1F0ED;border-radius:12px;border-bottom-left-radius:4px;align-self:flex-start;width:56px;}
+.typing-dot{width:6px;height:6px;background:var(--mid);border-radius:50%;animation:typing 1.2s infinite;}
+.typing-dot:nth-child(2){animation-delay:0.2s;}
+.typing-dot:nth-child(3){animation-delay:0.4s;}
+.chat-input-bar{border-top:1px solid #EDEBE6;padding:14px 16px;display:flex;gap:10px;align-items:center;}
+.chat-input{flex:1;border:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--mid);outline:none;}
+.chat-send{width:32px;height:32px;background:var(--gold);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+
+/* CONTACT */
+.contact{background:var(--dark);color:var(--white);padding:96px 48px;text-align:center;}
+.contact-title{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:300;margin-bottom:16px;}
+.contact-sub{font-size:15px;font-weight:300;color:rgba(255,255,255,0.55);margin-bottom:48px;}
+.contact-form{max-width:520px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-input{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:var(--white);padding:14px 18px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s;}
+.form-input::placeholder{color:rgba(255,255,255,0.3);}
+.form-input:focus{border-color:var(--gold);}
+.form-submit{background:var(--gold);color:var(--dark);border:none;padding:16px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;margin-top:6px;transition:opacity 0.2s;}
+.form-submit:hover{opacity:0.88;}
+
+/* FOOTER */
+footer{background:#111110;color:rgba(255,255,255,0.35);padding:28px 48px;display:flex;justify-content:space-between;align-items:center;font-size:12px;}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;color:rgba(255,255,255,0.6);}
+
+/* TIDIO PLACEHOLDER */
+.tidio-placeholder{position:fixed;bottom:28px;right:28px;z-index:999;}
+.tidio-btn{width:56px;height:56px;background:var(--gold);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(201,168,76,0.4);animation:float 3s ease-in-out infinite;}
+.tidio-tooltip{position:absolute;bottom:68px;right:0;background:var(--dark);color:var(--white);font-size:12px;white-space:nowrap;padding:8px 14px;border-radius:8px;pointer-events:none;opacity:0;transition:opacity 0.2s;}
+.tidio-placeholder:hover .tidio-tooltip{opacity:1;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+@keyframes typing{0%,80%,100%{opacity:0.3;}40%{opacity:1;}}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Sarah Johnson <span>Real Estate</span></div>
+  <ul class="nav-links">
+    <li><a href="#listings">Listings</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta">Book a Call</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Philadelphia & Surrounding Counties</div>
+    <h1 class="hero-title">Find your <em>perfect</em> home in the City of Brotherly Love</h1>
+    <p class="hero-sub">Serving buyers and sellers across Philadelphia, Main Line, and the Delaware Valley with 15 years of local expertise.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="document.getElementById('listings').scrollIntoView({behavior:'smooth'})">View Listings</button>
+      <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Let's Talk</button>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">$340M+</div><div class="stat-label">Total sales volume</div></div>
+      <div><div class="stat-num">850+</div><div class="stat-label">Homes sold</div></div>
+      <div><div class="stat-num">15yr</div><div class="stat-label">Local expertise</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-bg">
+      <svg class="philly-skyline" viewBox="0 0 800 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="200" width="800" height="100" fill="#0F1A18"/>
+        <rect x="60" y="140" width="40" height="160" fill="#1A2825"/>
+        <rect x="65" y="120" width="30" height="30" fill="#1E2F2C"/>
+        <rect x="130" y="100" width="55" height="200" fill="#1A2825"/>
+        <rect x="140" y="80" width="35" height="25" fill="#1E2F2C"/>
+        <rect x="145" y="60" width="4" height="25" fill="#C9A84C" opacity="0.7"/>
+        <rect x="210" y="130" width="35" height="170" fill="#1E2F2C"/>
+        <rect x="270" y="80" width="65" height="220" fill="#1A2825"/>
+        <rect x="280" y="60" width="45" height="25" fill="#1E2F2C"/>
+        <rect x="300" y="40" width="5" height="25" fill="#C9A84C" opacity="0.8"/>
+        <rect x="355" y="110" width="45" height="190" fill="#1E2F2C"/>
+        <rect x="360" y="90" width="35" height="25" fill="#222E2B"/>
+        <rect x="420" y="70" width="80" height="230" fill="#1A2825"/>
+        <rect x="430" y="50" width="60" height="25" fill="#1E2F2C"/>
+        <rect x="457" y="30" width="6" height="25" fill="#C9A84C"/>
+        <rect x="516" y="120" width="40" height="180" fill="#1E2F2C"/>
+        <rect x="572" y="90" width="55" height="210" fill="#1A2825"/>
+        <rect x="580" y="70" width="40" height="25" fill="#1E2F2C"/>
+        <rect x="643" y="140" width="35" height="160" fill="#1E2F2C"/>
+        <rect x="694" y="110" width="50" height="190" fill="#1A2825"/>
+        <rect x="700" y="90" width="38" height="25" fill="#1E2F2C"/>
+        <rect x="756" y="150" width="44" height="150" fill="#1E2F2C"/>
+        <!-- Windows -->
+        <rect x="75" y="155" width="5" height="7" fill="#C9A84C" opacity="0.3"/>
+        <rect x="85" y="155" width="5" height="7" fill="#C9A84C" opacity="0.5"/>
+        <rect x="75" y="170" width="5" height="7" fill="#C9A84C" opacity="0.2"/>
+        <rect x="140" y="115" width="6" height="8" fill="#C9A84C" opacity="0.4"/>
+        <rect x="152" y="115" width="6" height="8" fill="#C9A84C" opacity="0.6"/>
+        <rect x="164" y="115" width="6" height="8" fill="#C9A84C" opacity="0.3"/>
+        <rect x="140" y="132" width="6" height="8" fill="#C9A84C" opacity="0.5"/>
+        <rect x="152" y="132" width="6" height="8" fill="#C9A84C" opacity="0.2"/>
+        <rect x="283" y="95" width="7" height="9" fill="#C9A84C" opacity="0.5"/>
+        <rect x="296" y="95" width="7" height="9" fill="#C9A84C" opacity="0.3"/>
+        <rect x="309" y="95" width="7" height="9" fill="#C9A84C" opacity="0.6"/>
+        <rect x="283" y="112" width="7" height="9" fill="#C9A84C" opacity="0.4"/>
+        <rect x="296" y="112" width="7" height="9" fill="#C9A84C" opacity="0.5"/>
+        <rect x="432" y="85" width="8" height="10" fill="#C9A84C" opacity="0.6"/>
+        <rect x="447" y="85" width="8" height="10" fill="#C9A84C" opacity="0.4"/>
+        <rect x="462" y="85" width="8" height="10" fill="#C9A84C" opacity="0.5"/>
+        <rect x="477" y="85" width="8" height="10" fill="#C9A84C" opacity="0.3"/>
+        <rect x="432" y="104" width="8" height="10" fill="#C9A84C" opacity="0.3"/>
+        <rect x="447" y="104" width="8" height="10" fill="#C9A84C" opacity="0.6"/>
+        <rect x="577" y="105" width="7" height="9" fill="#C9A84C" opacity="0.4"/>
+        <rect x="590" y="105" width="7" height="9" fill="#C9A84C" opacity="0.6"/>
+        <rect x="603" y="105" width="7" height="9" fill="#C9A84C" opacity="0.3"/>
+        <!-- River reflection -->
+        <rect x="0" y="260" width="800" height="40" fill="#0D1614" opacity="0.8"/>
+        <rect x="150" y="265" width="80" height="3" fill="#C9A84C" opacity="0.08"/>
+        <rect x="430" y="268" width="100" height="2" fill="#C9A84C" opacity="0.06"/>
+      </svg>
+      <div style="position:absolute;top:40px;right:40px;text-align:right;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:300;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase;">Philadelphia</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:300;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase;">Pennsylvania</div>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <div class="badge-label">2024 Top Producer</div>
+      <div class="badge-val">#1 in Main Line</div>
+    </div>
+  </div>
+</section>
+
+<!-- LISTINGS -->
+<section class="section" id="listings">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Featured Properties</div>
+      <div class="section-title">Current listings</div>
+    </div>
+    <button class="btn-outline">View All 24 Listings</button>
+  </div>
+  <div class="listings-grid">
+    <div class="listing-card">
+      <div class="listing-img l1">
+        <div class="listing-img-bg l1" style="font-size:0;">
+          <svg viewBox="0 0 320 220" width="100%" height="100%">
+            <rect width="320" height="220" fill="#2D4A3E"/>
+            <rect x="80" y="100" width="160" height="120" fill="#1E3530"/>
+            <polygon points="80,100 160,40 240,100" fill="#1A2E28"/>
+            <rect x="120" y="140" width="30" height="40" fill="#162820"/>
+            <rect x="175" y="140" width="45" height="30" fill="#3A5A52"/>
+            <rect x="100" y="110" width="20" height="20" fill="#3A5A52"/>
+            <rect x="200" y="110" width="20" height="20" fill="#3A5A52"/>
+          </svg>
+        </div>
+        <div class="listing-tag">For Sale</div>
+      </div>
+      <div class="listing-info">
+        <div class="listing-price">$685,000</div>
+        <div class="listing-addr">2847 Spruce Street, Philadelphia, PA</div>
+        <div class="listing-meta">
+          <span><strong>4</strong> beds</span>
+          <span><strong>3</strong> baths</span>
+          <span><strong>2,400</strong> sqft</span>
+        </div>
+      </div>
+    </div>
+    <div class="listing-card">
+      <div class="listing-img l2">
+        <div class="listing-img-bg l2" style="font-size:0;">
+          <svg viewBox="0 0 320 220" width="100%" height="100%">
+            <rect width="320" height="220" fill="#3D3228"/>
+            <rect x="60" y="80" width="200" height="140" fill="#2A2018"/>
+            <rect x="60" y="80" width="200" height="20" fill="#221A12"/>
+            <rect x="60" y="110" width="200" height="20" fill="#221A12"/>
+            <rect x="60" y="140" width="200" height="20" fill="#221A12"/>
+            <rect x="130" y="160" width="60" height="60" fill="#1A1208"/>
+            <rect x="80" y="90" width="30" height="30" fill="#4A3A28"/>
+            <rect x="210" y="90" width="30" height="30" fill="#4A3A28"/>
+            <rect x="80" y="120" width="30" height="20" fill="#4A3A28"/>
+            <rect x="210" y="120" width="30" height="20" fill="#4A3A28"/>
+          </svg>
+        </div>
+        <div class="listing-tag">New</div>
+      </div>
+      <div class="listing-info">
+        <div class="listing-price">$1,250,000</div>
+        <div class="listing-addr">415 Conestoga Rd, Wayne, PA</div>
+        <div class="listing-meta">
+          <span><strong>5</strong> beds</span>
+          <span><strong>4.5</strong> baths</span>
+          <span><strong>4,100</strong> sqft</span>
+        </div>
+      </div>
+    </div>
+    <div class="listing-card">
+      <div class="listing-img l3">
+        <div class="listing-img-bg l3" style="font-size:0;">
+          <svg viewBox="0 0 320 220" width="100%" height="100%">
+            <rect width="320" height="220" fill="#2A3545"/>
+            <rect x="100" y="60" width="120" height="160" fill="#1A2535"/>
+            <rect x="70" y="100" width="180" height="20" fill="#141D2A"/>
+            <rect x="110" y="160" width="100" height="60" fill="#121A28"/>
+            <rect x="120" y="70" width="80" height="80" fill="#1E2E40"/>
+            <rect x="130" y="80" width="25" height="30" fill="#2A3D55"/>
+            <rect x="165" y="80" width="25" height="30" fill="#2A3D55"/>
+            <rect x="100" y="108" width="120" height="4" fill="#C9A84C" opacity="0.3"/>
+          </svg>
+        </div>
+        <div class="listing-tag">Pending</div>
+      </div>
+      <div class="listing-info">
+        <div class="listing-price">$429,000</div>
+        <div class="listing-addr">1923 Fairmount Ave, Philadelphia, PA</div>
+        <div class="listing-meta">
+          <span><strong>3</strong> beds</span>
+          <span><strong>2</strong> baths</span>
+          <span><strong>1,650</strong> sqft</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-img-wrap">
+    <div class="about-img-block">
+      <svg viewBox="0 0 300 400" width="100%" height="100%" style="position:absolute;inset:0;">
+        <rect width="300" height="400" fill="#2A2A26"/>
+        <ellipse cx="150" cy="140" rx="65" ry="75" fill="#3A3A36"/>
+        <ellipse cx="150" cy="130" rx="45" ry="55" fill="#4A4A44"/>
+        <rect x="70" y="210" width="160" height="190" rx="4" fill="#3A3A36"/>
+        <rect x="95" y="210" width="110" height="30" fill="#4A4A44"/>
+        <text x="150" y="232" text-anchor="middle" font-family="serif" font-size="14" fill="#C9A84C" opacity="0.6">Sarah Johnson</text>
+        <rect x="100" y="255" width="40" height="8" rx="2" fill="#555550" opacity="0.5"/>
+        <rect x="148" y="255" width="55" height="8" rx="2" fill="#555550" opacity="0.5"/>
+        <rect x="100" y="272" width="55" height="8" rx="2" fill="#555550" opacity="0.5"/>
+        <rect x="100" y="289" width="40" height="8" rx="2" fill="#555550" opacity="0.3"/>
+      </svg>
+    </div>
+    <div class="about-img-accent"></div>
+  </div>
+  <div>
+    <div class="about-eyebrow">About Sarah</div>
+    <h2 class="about-title">Your trusted guide to <em>Philadelphia real estate</em></h2>
+    <p class="about-text">With over 15 years helping families buy and sell homes across Philadelphia and the Main Line, I bring deep market knowledge, honest guidance, and relentless dedication to every transaction. From Rittenhouse Square condos to Main Line estates, I know this market inside and out.</p>
+    <div class="about-highlights">
+      <div class="highlight"><div class="highlight-dot"></div>Licensed in Pennsylvania & New Jersey</div>
+      <div class="highlight"><div class="highlight-dot"></div>Certified Luxury Home Marketing Specialist</div>
+      <div class="highlight"><div class="highlight-dot"></div>Zillow Premier Agent — 5-star rated</div>
+      <div class="highlight"><div class="highlight-dot"></div>Philadelphia Magazine Five Star Agent 2019–2024</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">What I offer</div>
+      <div class="section-title">Full-service real estate</div>
+    </div>
+  </div>
+  <div class="services-grid">
+    <div class="service-item">
+      <div class="service-num">01</div>
+      <div class="service-title">Buyer Representation</div>
+      <div class="service-desc">From first showing to closing day, I guide you through every step — offer strategy, inspection, negotiation, and beyond.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">02</div>
+      <div class="service-title">Seller Marketing</div>
+      <div class="service-desc">Professional photography, targeted digital marketing, and a proven pricing strategy to get you top dollar in any market.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">03</div>
+      <div class="service-title">Relocation Services</div>
+      <div class="service-desc">Moving to the Philadelphia area? I help you find the right neighborhood, school district, and home for your family's needs.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CHATBOT CTA -->
+<section class="chatbot-section">
+  <div>
+    <div class="chatbot-label">
+      <div class="chatbot-dot"></div>
+      <span class="chatbot-label-text">Available 24/7</span>
+    </div>
+    <div class="section-eyebrow">Instant answers</div>
+    <h2 class="section-title" style="margin-bottom:20px;">Questions? My AI assistant is always on</h2>
+    <p style="font-size:15px;font-weight:300;line-height:1.7;color:var(--mid);margin-bottom:32px;">Don't wait for a callback. Get instant answers about listings, the buying process, market conditions, or schedule a time to talk — any time of day.</p>
+    <button class="btn-primary">Chat Now →</button>
+  </div>
+  <div class="chatbot-mockup">
+    <div class="chat-header">
+      <div class="chat-avatar">SJ</div>
+      <div>
+        <div class="chat-name">Sarah's Assistant</div>
+        <div class="chat-status">● Online now</div>
+      </div>
+    </div>
+    <div class="chat-body">
+      <div class="msg msg-bot">Hi! I'm Sarah's assistant. I can answer questions about listings, the buying or selling process, or help you book a call with Sarah. What can I help you with?</div>
+      <div class="msg msg-user">What areas does Sarah cover?</div>
+      <div class="msg msg-bot">Sarah serves all of Philadelphia and the surrounding area — including the Main Line (Wayne, Ardmore, Bryn Mawr), South Jersey, and Delaware County. Is there a specific neighborhood you're interested in?</div>
+      <div class="msg msg-user">How do I know what my home is worth?</div>
+      <div class="msg-typing"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>
+    </div>
+    <div class="chat-input-bar">
+      <input class="chat-input" placeholder="Ask anything about real estate…" readonly>
+      <button class="chat-send">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-eyebrow" style="text-align:center;margin-bottom:16px;">Get in touch</div>
+  <h2 class="contact-title">Ready to get started?</h2>
+  <p class="contact-sub">Whether you're buying, selling, or just exploring — let's talk.</p>
+  <div class="contact-form">
+    <div class="form-row">
+      <input class="form-input" type="text" placeholder="First name">
+      <input class="form-input" type="text" placeholder="Last name">
+    </div>
+    <input class="form-input" type="email" placeholder="Email address">
+    <input class="form-input" type="tel" placeholder="Phone number">
+    <select class="form-input" style="cursor:pointer;appearance:none;">
+      <option value="" disabled selected>I'm looking to…</option>
+      <option>Buy a home</option>
+      <option>Sell my home</option>
+      <option>Both buy and sell</option>
+      <option>Just exploring</option>
+    </select>
+    <button class="form-submit">Send Message</button>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Sarah Johnson Real Estate</div>
+  <div>© 2025 Sarah Johnson Real Estate · Philadelphia, PA · License #RS123456</div>
+  <div>Keller Williams Main Line</div>
+</footer>
+
+<!-- TIDIO PLACEHOLDER -->
+<div class="tidio-placeholder">
+  <div class="tidio-tooltip">Chat with Sarah's assistant</div>
+  <button class="tidio-btn">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  </button>
+</div>
+
+<script>
+// Animate typing bubble cycling
+const typingMsg = document.querySelector('.msg-typing');
+const chatBody = document.querySelector('.chat-body');
+const responses = [
+  "Great question! The best way to find out is a free Comparative Market Analysis. I can have Sarah reach out to schedule one — it takes about 20 minutes and there's no obligation. Can I grab your name and email?",
+  "Absolutely! Sarah offers free home valuations for Philadelphia area homeowners. Would you like to book a quick call?",
+];
+let respIndex = 0;
+setInterval(() => {
+  setTimeout(() => {
+    const newMsg = document.createElement('div');
+    newMsg.className = 'msg msg-bot';
+    newMsg.style.opacity = '0';
+    newMsg.style.transition = 'opacity 0.4s';
+    newMsg.textContent = responses[respIndex % responses.length];
+    respIndex++;
+    chatBody.insertBefore(newMsg, typingMsg);
+    requestAnimationFrame(() => { newMsg.style.opacity = '1'; });
+    chatBody.scrollTop = chatBody.scrollHeight;
+    setTimeout(() => {
+      const userMsg = document.createElement('div');
+      userMsg.className = 'msg msg-user';
+      userMsg.style.opacity = '0';
+      userMsg.style.transition = 'opacity 0.4s';
+      const userQuestions = ["What's the buying process like?","How long does it take to close?","Do you work with first-time buyers?"];
+      userMsg.textContent = userQuestions[respIndex % userQuestions.length];
+      chatBody.appendChild(userMsg);
+      chatBody.appendChild(typingMsg);
+      requestAnimationFrame(() => { userMsg.style.opacity = '1'; });
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }, 2000);
+  }, 1500);
+}, 6000);
+</script>
+</body>
+</html>
